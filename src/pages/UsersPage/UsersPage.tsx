@@ -1,7 +1,7 @@
 
 import DynamicList from '../../components/DynamicList/DynamicList';
 import Header from '../../components/Header/Header';
-import { urls } from '../../config';
+import { themeColors, urls } from '../../config';
 import useIsMobile from '../../hooks/useIsMobile';
 
 

@@ -176,7 +176,7 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                     <MiniLineChart
                         data={data}
                         height={80}
-                        onMarkerClick={((data: any) => {
+                        onMarkerClick={((data: any, index) => {
                             console.log(data);
                             setCurrentPeriod(data.displayPeriod);
                             setCurrentValue(data.total);
@@ -192,7 +192,7 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                     <MiniBarChart
                         data={data}
                         height={80}
-                        onBarClick={((data: any) => {
+                        onBarClick={((data: any, index) => {
                             console.log(data);
                             setCurrentPeriod(data.displayPeriod);
                             setCurrentValue(data.total);
@@ -213,7 +213,7 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                         <MiniGroupedBarChart
                             data={groupedBarData}
                             height={80}
-                            onSubBarClick={(value, _index, group) => {
+                            onSubBarClick={(value, index, group) => {
                                 console.log(value, group);
                                 setCurrentPeriod(group.displayPeriod || group.period);
                                 setCurrentValue(value.value);
@@ -236,7 +236,7 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                         <MiniStackedBarChart
                             data={stackedBarData}
                             height={80}
-                            onSubBarClick={(value, _index, group) => {
+                            onSubBarClick={(value, index, group) => {
                                 console.log(value, group);
                                 setCurrentPeriod(group.displayPeriod || group.period);
                                 setCurrentValue(value.value);
@@ -259,7 +259,7 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                             data={pieBarData}
                             height={90}
                             width={90}
-                            onSliceClick={(_index, value) => {
+                            onSliceClick={(index, value) => {
                                 console.log(value, value);
                                 //setCurrentPeriod(group.displayPeriod || group.period);
                                 setCurrentValue(value.value);

@@ -1,13 +1,20 @@
 
 
-// import useIsMobile from '../../hooks/useIsMobile';
+import Header from '../../components/Header/Header';
+import IndicatorCard from '../../components/IndicatorCard/IndicatorCard';
+import NoContent from '../../components/NoContent/NoContent';
+import { themeColors } from '../../config';
+import useIsMobile from '../../hooks/useIsMobile';
 
 
 const DashboardPage = () => {
-    // const breakpoint = 768;
-    // const { isMobile } = useIsMobile(breakpoint);
+    const breakpoint = 768;
+    const { isMobile } = useIsMobile(breakpoint);
 
     // Data hardcoded
+    const indicators: any = [
+
+    ];
 
 
     return (

@@ -30,12 +30,18 @@ interface SelectFieldProps {
 }
 
 const SelectField: React.FC<SelectFieldProps> = ({
+    label,
+    description,
     value,
     onChange,
     containerStyle,
+    labelStyle,
     popoverStyle,
     buttonStyle,
     buttonTitleStyle,
+    descriptionStyle,
+    className,
+    id,
     optionStyle,
     activeOptionStyle,
     options = [],

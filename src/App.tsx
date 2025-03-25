@@ -35,8 +35,8 @@ import MyCampaignsPage from "./pages/MyCampaignsPage/MyCampaignsPage";
 import ReportingPage from "./pages/ReportingPage/ReportingPage";
 import PayoutDetailsPage from "./pages/PayoutDetailsPage/PayoutDetailsPage";
 import VisualAssetsPage from "./pages/VisualAssetsPage/VisualAssetsPage";
-import OraclePage from "./pages/DashboardPage/Oracle/OraclePage";
-import SubmitReferrallPage from "./pages/DashboardPage/SubmitReferrallPage/SubmitReferrallPage";
+import PartnershipOraclePage from "./pages/PartnershipOraclePage/PartnershipOraclePage";
+import SubmitReferralPage from "./pages/SubmitReferralPage/SubmitReferralPage";
 
 
 const App: React.FC = () => {
@@ -53,11 +53,13 @@ const App: React.FC = () => {
             <Route
               element={
                 <PrivateLayout
-                  showMenu={false}
+                  showMenu={true}
+                  showSidebar={false}
+                  showFooter={true}
                 />
               }
             >
-
+              <Route path="/partnership-oracle" element={<PartnershipOraclePage />} />
             </Route>
             <Route
               element={
@@ -81,8 +83,8 @@ const App: React.FC = () => {
               <Route path="/referrers" element={<ReferrersPage />} />
               <Route path="/referral-links" element={<ReferralLinksPage />} />
               <Route path="/referral-clicks" element={<ReferralClicksPage />} />
-              <Route path="/oracle" element={<OraclePage />} /> 
-              <Route path="/submit-referral" element={<SubmitReferrallPage />} />
+
+              <Route path="/submit-referral" element={<SubmitReferralPage />} />
             </Route>
           </Route>
           {/* Public routes */}

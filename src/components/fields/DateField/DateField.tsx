@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useRef, useState } from "react";
+import Button from "../../buttons/Button/Button";
+import Popover from "../../Popover/Popover";
+import { themeColors } from "../../../config";
 
 interface DateFieldProps {
     label?: string;
     description?: string;
-    value?: string; // Formato ISO (YYYY-MM-DD)
-    onChange: (value: string) => void;
-    minDate?: string; // Fecha mínima (YYYY-MM-DD)
-    maxDate?: string; // Fecha máxima (YYYY-MM-DD)
+    value: string;
+    onChange: (optionName: string) => void;
     containerStyle?: React.CSSProperties;
-    inputStyle?: React.CSSProperties;
     labelStyle?: React.CSSProperties;
+    buttonStyle?: React.CSSProperties;
+    buttonTitleStyle?: React.CSSProperties;
+    popoverStyle?: React.CSSProperties;
     descriptionStyle?: React.CSSProperties;
     className?: string;
     id?: string;
+    options?: { label: string; value: string }[];
+    optionStyle?: React.CSSProperties;
+    activeOptionStyle?: React.CSSProperties;
+
+    startIcon?: string;
+    startIconPaths?: string[];
+    startIconSize?: number;
+    startIconStyle?: React.CSSProperties;
+    startIconColor?: string;
+
+    endIcon?: string;
+    endIconPaths?: string[];
+    endIconSize?: number;
+    endIconStyle?: React.CSSProperties;
+    endIconColor?: string;
 }
 
 const DateField: React.FC<DateFieldProps> = ({
@@ -20,63 +38,101 @@ const DateField: React.FC<DateFieldProps> = ({
     description,
     value,
     onChange,
-    minDate,
-    maxDate,
     containerStyle,
-    inputStyle,
     labelStyle,
+    popoverStyle,
+    buttonStyle,
+    buttonTitleStyle,
     descriptionStyle,
     className,
     id,
+    startIcon = 'calendar',
+    startIconPaths,
+    startIconSize,
+    startIconStyle,
+    startIconColor = themeColors.secondary,
+    endIcon,
+    endIconPaths,
+    endIconSize,
+    endIconStyle,
+    endIconColor,
+
+
 }) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.value); // Devuelve el valor de la fecha seleccionada
+    const buttonRef = useRef<HTMLDivElement | null>(null);
+    const [isPopoverOpen, setPopoverOpen] = useState(false);
+    const [selectedValue, setSelectedValue] = useState(value);
+
+    const togglePopover = () => setPopoverOpen((prev) => !prev);
+    const closePopover = () => setPopoverOpen(false);
+
+    const handleClick = (selectedOption: string) => {
+        setSelectedValue(selectedOption);
+        onChange(selectedOption);
+
+        setTimeout(() => {
+            closePopover();
+        }, 500);
     };
 
     return (
-        <div
-            id={id}
-            className={`date-field-container ${className}`}
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '5px',
-                ...containerStyle,
-            }}
-        >
-            {label && (
-                <label
-                    style={{
-                        fontWeight: 'bold',
-                        ...labelStyle,
-                    }}
-                >
-                    {label}
-                </label>
-            )}
-            {description && (
-                <p
-                    style={{
-                        fontStyle: 'italic',
-                        fontSize: '0.9em',
-                        ...descriptionStyle,
-                    }}
-                >
-                    {description}
-                </p>
-            )}
-            <input
-                type="date"
-                value={value}
-                min={minDate}
-                max={maxDate}
-                onChange={handleChange}
-                style={{
-                    padding: '5px',
-                    border: '1px solid #ccc',
-                    borderRadius: '4px',
-                    ...inputStyle,
+        <div style={{ position: "relative", ...containerStyle }}>
+            {/* Button */}
+            <Button
+                ref={buttonRef}
+                title={
+
+                    selectedValue
+                }
+                type="outline"
+                color={themeColors.medium}
+                titleStyle={{
+                    color: themeColors.textTint,
+                    ...buttonTitleStyle
                 }}
+                onClick={togglePopover}
+                style={{
+                    //paddingRight: showCaret ? 15 : 10,
+                    backgroundColor: '#171518',
+                    //justifyContent: 'space-between',
+                    ...buttonStyle,
+                }}
+                //fullWidth
+                startIcon={startIcon}
+                startIconPaths={startIconPaths}
+                startIconSize={startIconSize}
+                startIconStyle={startIconStyle}
+                startIconColor={startIconColor}
+                endIcon={endIcon}
+                endIconPaths={endIconPaths}
+                endIconSize={endIconSize}
+                endIconStyle={endIconStyle}
+                endIconColor={endIconColor}
+            />
+
+
+
+
+            {/* Popover Dropdown */}
+            <Popover
+                content={
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            padding: 0,
+                            width: "100%",
+                        }}
+                    >
+
+                    </div>
+                }
+                anchorRef={buttonRef as React.RefObject<HTMLElement>}
+                isOpen={isPopoverOpen}
+                onClose={closePopover}
+                hasShadow
+                containerStyle={{ ...popoverStyle }}
             />
         </div>
     );

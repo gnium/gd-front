@@ -9,7 +9,7 @@
   "affiliate": "Affiliate",
   "visualAssets": "Visual Assets",
   "reporting": "Reporting",
-  "payoutDetails": "Payout Details",
+
   "hosting": "Hosting",
   "agencies": "Agencies",
   "enterprise": "Enterprise",
@@ -38,7 +38,6 @@
   "signOut": "Sign out",
   "webBanners": "Web Banners",
   "pagelyLogos": "Pagely Logos",
-  "hostingSetupImages": "Hosting Setup Images",
   "websiteSetupTutorial": "Website Setup Tutorial",
   "language": "Language",
   "spanish": "Español",
@@ -98,5 +97,207 @@
     "subscribe": "Subscribe",
 
     "copyright": "©2025 Pagely All rights reserved"
+  },
+  "pricingCard": {
+    "mostPopular": "Most Popular",
+    "plans": [
+      {
+        "title": "ProPress",
+        "description": "High Availability Config $1249/mo",
+        "price": "$499 /per month",
+        "features": [
+          "35 WordPress Sites Allowed",
+          "2 vCPU",
+          "4 GB RAM",
+          "50 GB SSD Storage",
+          "No Cap on PHP Workers",
+          "Decoupled Database Resources",
+          "Managed DevOps and Support",
+          "Flexible Configuration"
+        ]
+      },
+      {
+        "title": "PowerPress",
+        "description": "High Availability Config $2249/mo",
+        "price": "$999 /per month",
+        "features": [
+          "60 WordPress Sites Allowed",
+          "4 vCPU",
+          "8 GB RAM",
+          "50 GB SSD Storage",
+          "No Cap on PHP Workers",
+          "Decoupled Database Resources",
+          "Managed DevOps and Support",
+          "Flexible Configuration"
+        ]
+      },
+      {
+        "title": "ScalePress",
+        "description": "High Availability Config $3600/mo",
+        "price": "$2500 /per month",
+        "features": [
+          "Custom Number of WordPress Sites Allowed",
+          "Custom CPU",
+          "Custom RAM",
+          "Custom SSD Storage",
+          "No Cap on PHP Workers",
+          "Decoupled Database Resources",
+          "Managed DevOps and Support",
+          "Flexible Configuration"
+        ]
+      }
+    ],
+    "buyNow": "Buy Now",
+    "comparePlans": "Compare Plans"
+  },
+  "blog": "Blog",
+  "guides": "Guides",
+  "partnerServices": "Partner Services",
+  "partnershipOracle": "Partnership Program Oracle",
+  "submitReferral": "Submit a Referral",
+  "partnershipOraclePage": {
+    "title": "Pagely Partnership Program Oracle",
+    "subtitle": "Welcome to the Pagely Partner Program. We are excited to have you as a part of our team of service providers we promote. The questions below will help you navigate through your benefits, what we do for you and how to make the most of our partnership.",
+    "label": "Partnership Program"
+  },
+  "hostingSetupImages": {
+    "title": "Hosting Setup Images",
+    "description": "At Pagely, we believe in empowering our affiliates with the tools and resources needed to help their clients succeed. This guide simplifies the process of choosing and explaining our hosting plans, ensuring your customers can easily understand the benefits and make the right choice for their business.",
+    "sections": {
+      "choosePlan": {
+        "title": "Section 1: Choose the Right Hosting Plan",
+        "description": "Pagely offers scalable and secure hosting solutions to meet the needs of businesses of all sizes. Here’s how you can guide your clients in selecting the best plan:"
+      },
+      "stepsToGetStarted": {
+        "title": "Section 2: Steps to Get Started",
+        "subtitle": "A Simple 3-Step Process",
+        "steps": {
+          "step1": {
+            "title": "Choose a Hosting Plan",
+            "description": "Guide your customers to select a plan based on their business needs."
+          },
+          "step2": {
+            "title": "Connect a Domain",
+            "description": "They can register a new domain or link an existing one to get started immediately."
+          },
+          "step3": {
+            "title": "Launch Their Site",
+            "description": "Pagely’s expert support team will assist with the migration and setup process to ensure a smooth transition."
+          }
+        }
+      },
+      "resourcesForClients": {
+        "title": "Section 3: Resources for Your Clients",
+        "subtitle": "Essential Resources to Simplify Hosting",
+        "resources": {
+          "visualAssets": {
+            "title": "Visual Assets",
+            "description": "Provide screenshots, banners, and logos to help illustrate the hosting experience."
+          },
+          "faqs": {
+            "title": "FAQs",
+            "description": "Share common questions and answers to address potential client concerns."
+          },
+          "support": {
+            "title": "Support",
+            "description": "Highlight Pagely’s 24/7 expert support available to assist with migrations and hosting challenges."
+          }
+        }
+      },
+      "whyPagely": {
+        "title": "Section 4: Why Pagely?",
+        "subtitle": "Help your clients understand why Pagely is the best choice for their hosting needs:",
+        "features": {
+          "performance": {
+            "title": "Built for Performance",
+            "description": "Powered by AWS for exceptional speed and uptime."
+          },
+          "security": {
+            "title": "Enterprise Security",
+            "description": "WAF and DDoS protection keep their data secure."
+          },
+          "scalability": {
+            "title": "Scalable Solutions",
+            "description": "Hosting that grows with their business."
+          },
+          "support": {
+            "title": "Expert Support",
+            "description": "Always-on assistance from our team of WordPress specialists."
+          }
+        }
+      }
+    }
+  },
+  "currentCommissionRate": "Current Commission Rate",
+  "pendingCommissions": "Pending Commissions",
+  "paidThisMonth": "Paid This Month",
+  "totalPaid": "Total Paid",
+  "sale": "/Sale",
+  "from": "From",
+  "to": "To",
+  "export": "Export",
+  "campaign": "Campaign",
+  "plans": "Plans",
+  "event": "Event",
+  "status": "Status",
+  "commissionsReport": {
+    "title": "Commissions Report",
+    "noCommissionsTitle": "You Have No Commissions Yet",
+    "noCommissionsDescription": "Learn how you can start generating affiliate commissions with our affiliate guide.",
+    "getAffiliateGuide": "Get Affiliate Guide"
+  },
+
+  "conversionsReport": {
+    "title": "Conversions Report"
+  },
+  "performanceGraph": {
+    "title": "Performance Graph"
+  },
+  "payoutOptions": {
+    "title": "Payout Options",
+    "payoutMethodLabel": "Payout Method",
+    "paypalEmailLabel": "PayPal - Email",
+    "minPayoutAmountLabel": "Minimum Payout Amount",
+
+    "infoText": "We pay your commissions weekly.\nYou can specify how you wish to get paid and a minimum payout amount.",
+    "viewCommissionTiers": "View your commissions tiers",
+    "payoutMethods": {
+      "paypal": "PayPal",
+      "bankTransfer": "Bank Transfer",
+      "crypto": "Cryptocurrency",
+      "venmo": "Venmo",
+      "wise": "Wise",
+      "skrill": "Skrill"
+    }
+  },
+  "payoutDetails": {
+    "title": "Payout Details"
+  },
+  "payoutHistory": {
+    "title": "Payout History"
+  },
+  "taxDocuments": {
+    "title": "Tax Documents"
+  },
+  "all": "All",
+  "campaigns": {
+    "summer": "Summer Campaign",
+    "blackFriday": "Black Friday",
+    "holiday": "Holiday Specials"
+  },
+  "planOptions": {
+    "basic": "Basic Plan",
+    "premium": "Premium Plan",
+    "enterprise": "Enterprise Plan"
+  },
+  "events": {
+    "sale": "Sale",
+    "refund": "Refund",
+    "lead": "Lead Generated"
+  },
+  "statuses": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
   }
 }

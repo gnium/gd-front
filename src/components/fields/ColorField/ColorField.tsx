@@ -184,12 +184,12 @@ const ColorField: React.FC<ColorFieldProps> = ({
                                         ))}
                                     </tr>
                                     <tr>
-                                        {semanticColors.map((color, idx) => (
+                                        {semanticColors.map((color: any, idx) => (
                                             <td key={idx}>
                                                 <button
                                                     onClick={(e) => handleSelectSemanticColor(e, color.name)}
                                                     style={{
-                                                        backgroundColor: themeColors[color.name as keyof typeof themeColors],
+                                                        backgroundColor: themeColors[color.name],
                                                         opacity:
                                                             disablePrimary && color.name === "primary" ? 0.5 : 1,
                                                         cursor:

@@ -1,6 +1,8 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { themeColors } from "../../config";
+import useIsMobile from "../../hooks/useIsMobile";
+import { useAuth } from "../../contexts/AuthContext";
 import logoHorizontalWhite from '../../assets/logos/logo-horizontal-white.svg';
 import pagelyBg from '../../assets/backgrounds/pagely-bg.svg';
 import { useTranslation } from "react-i18next";
@@ -20,9 +22,11 @@ interface PrivateLayoutProps {
 
 const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSidebar = false, showFooter = false }) => {
     const { t, i18n } = useTranslation();
-    // const breakpoint = 768;
-    // const { isMobile } = useIsMobile(breakpoint);
-    // const { getUser } = useAuth();
+    const location = useLocation();
+    const breakpoint = 768;
+    const { isMobile } = useIsMobile(breakpoint);
+    const { getUser } = useAuth();
+    const user = getUser();
 
     return (
         <>
@@ -83,9 +87,9 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
                             { labelKey: "myCampaigns", path: "/", icon: <Icon color={themeColors.primary} name="megaphone" /> },
                             { labelKey: "visualAssets", path: "/visual-assets", icon: <Icon color={themeColors.primary} name="palette" /> },
                             { labelKey: "reporting", path: "/reporting", icon: <Icon color={themeColors.primary} name="chart" /> },
-                            { labelKey: "payoutDetails", path: "/payout-details", icon: <Icon color={themeColors.primary} name="creditCard" /> },
-                            { labelKey: "oracle", path: "/oracle", icon: <Icon color={themeColors.primary} name="creditCard" /> },
-                            { labelKey: "submitAReferral", path: "/submit-referral", icon: <Icon color={themeColors.primary} name="children" /> },
+                            { labelKey: "payoutDetails.title", path: "/payout-details", icon: <Icon color={themeColors.primary} name="creditCard" /> },
+                            { labelKey: "partnershipOracle", path: "/partnership-oracle", icon: <Icon color={themeColors.primary} name="oracle" /> },
+                            { labelKey: "submitReferral", path: "/submit-referral", icon: <Icon color={themeColors.primary} name="referral" /> },
                         ]}
                         renderMenuItem={(item: any) => {
 
@@ -109,13 +113,15 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
                                 >
 
                                     <span style={{
+                                        minWidth: 40,
                                         width: 40,
                                         height: 40,
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
                                         borderRadius: 10,
-                                        backgroundColor: "rgba(136, 136, 136, 0.1)"
+                                        backgroundColor: "rgba(136, 136, 136, 0.1)",
+                                        //flex: 1
 
                                     }}>
                                         {item.icon}
@@ -182,12 +188,24 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
                     {/* TopBar */}
                     {showMenu && (
                         <TopBar
-                            renderLeft={<img src={logoHorizontalWhite} alt="Pagely" style={{ height: "40px" }} />}
+                            renderLeft={<Link to="/" style={{ display: "flex", alignItems: "center" }}>
+                                <img
+                                    src={logoHorizontalWhite}
+                                    alt="Pagely"
+                                    style={{ height: "40px", cursor: "pointer" }}
+                                />
+                            </Link>}
                             renderCenter={
-                                <nav>
+                                <nav style={{
+                                    fontSize: 14
+                                }}>
                                     <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("hosting")}</a>
                                     <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("pricing")}</a>
                                     <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("support")}</a>
+                                    <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("knowledgeBase")}</a>
+                                    <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("blog")}</a>
+                                    <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("guides")}</a>
+                                    <a href="#" style={{ color: "#fff", margin: "0 10px" }}>{t("partnerServices")}</a>
                                 </nav>
                             }
                             renderRight={

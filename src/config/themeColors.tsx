@@ -19,7 +19,7 @@ interface ThemeColors {
 
 const themeColors: ThemeColors = {
   primary: "#00CE8E",
-  primaryShade: "#0c6464",
+  primaryShade: "#007752",
   primaryTint: "#abdbdb",
   secondary: "#F750D3",
   dark: "#0E0D0F",

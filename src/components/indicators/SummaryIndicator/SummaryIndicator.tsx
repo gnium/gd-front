@@ -23,7 +23,7 @@ const SummaryIndicator: React.FC<SummaryIndicatorProps> = ({
     thousandSeparator = ',',
     decimalSeparator = '.',
 }) => {
-    const [currentIndex] = useState(data.length - 1); // Último periodo por defecto
+    const [currentIndex, setCurrentIndex] = useState(data.length - 1); // Último periodo por defecto
 
     // Obtiene el total del periodo actual
     const currentTotal = data[currentIndex].total;

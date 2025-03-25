@@ -69,7 +69,7 @@ const Icon: React.FC<IconProps> = ({
 
     const preparedPaths = iconPaths.map((path: IconPath) => ({
         ...path,
-        color: resolvedColor || path.color || themeColors.text,
+        color: path.color || resolvedColor || themeColors.text,
     }));
 
 

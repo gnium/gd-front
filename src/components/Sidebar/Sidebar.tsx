@@ -44,7 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             style={{
                 width: "250px",
                 //height: "100vh",
-                height: 600,
+                height: 650,
                 backgroundColor: themeColors.dark,
                 color: themeColors.textTint,
                 padding: "20px 10px",

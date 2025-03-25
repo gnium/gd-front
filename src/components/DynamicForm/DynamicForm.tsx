@@ -118,7 +118,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
 }) => {
     const [processing, setProcessing] = useState(false);
     const [formValues, setFormValues] = useState<Record<string, any>>({});
-    const [isMobile] = useState<boolean>(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
     const client: HttpClient = useSecureConnection ? securedHttpClient : httpClient;
 
     if (apiBaseUrl) client.setBaseURL(apiBaseUrl);

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import { themeColors, urls } from '../../config'
 import { useNavigate } from 'react-router-dom';
@@ -31,9 +31,9 @@ const RegisterPage = () => {
     };
     const navigate = useNavigate();
     // Handle form submission
-    /*const handleSubmit = (data: any) => {
+    const handleSubmit = (data: any) => {
         console.log('Form submitted:', data);
-    };*/
+    };
     const formFields = [
         {
             type: 'text',
@@ -124,7 +124,7 @@ const RegisterPage = () => {
 
                 }}
 
-                onSuccess={() => {
+                onSuccess={(res) => {
                     showToast(
                         "Bien!",
                         "Te registraste con éxito.",

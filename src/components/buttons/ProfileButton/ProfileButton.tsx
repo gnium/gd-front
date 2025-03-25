@@ -29,8 +29,6 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
     // Close the popover
     const closePopover = () => setPopoverOpen(false);
 
-    
-
     return (
         <>
             <div
@@ -45,7 +43,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
                 }}
             >
                 <Thumbnail
-                    src={user.profile_picture_url.replace(/^(https?:\/\/[^\/]+)(\/.*)?$/, `$1:8000$2`)}
+                    src={user.profile_picture_url}
                     size='sm'
                 />
             </div>
@@ -63,7 +61,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({
                     }}>
 
                         <Thumbnail
-                            src={user.profile_picture_url.replace(/^(https?:\/\/[^\/]+)(\/.*)?$/, `$1:8000$2`)}
+                            src={user.profile_picture_url}
                             size='lg'
                         />
                         <div

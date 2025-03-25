@@ -15,6 +15,8 @@ import solidWhiteBackground from '../../assets/logos/solid-white-background.png'
 import transparentBackground from '../../assets/logos/transparent-background.png';
 import solidDarkBackground from '../../assets/logos/solid-dark-background.png';
 
+import HostingSetupImages from '../../components/HostingSetupImages/HostingSetupImages';
+
 const VisualAssetsPage = () => {
     const { t } = useTranslation();
     const [currentTab, setCurrentTab] = useState('webBanners');
@@ -53,7 +55,7 @@ const VisualAssetsPage = () => {
                     tabs={[
                         { name: "webBanners", label: t("webBanners") },
                         { name: "pagelyLogos", label: t("pagelyLogos") },
-                        { name: "hostingImages", label: t("hostingSetupImages") },
+                        { name: "hostingImages", label: t("hostingSetupImages.title") },
                         { name: "websiteTutorial", label: t("websiteSetupTutorial") },
                     ]}
                     defaultActiveTab={currentTab}
@@ -463,7 +465,13 @@ const VisualAssetsPage = () => {
                         </> : <></>
 
                 }
+                {
+                    currentTab === 'hostingImages' ?
+                        <>
+                            <HostingSetupImages />
+                        </> : <></>
 
+                }
             </main>
         </div>
     )

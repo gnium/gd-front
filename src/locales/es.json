@@ -9,7 +9,7 @@
   "affiliate": "Afiliado",
   "visualAssets": "Recursos Visuales",
   "reporting": "Reportes",
-  "payoutDetails": "Detalles de Pago",
+
   "hosting": "Hosting",
   "agencies": "Agencias",
   "enterprise": "Empresas",
@@ -38,7 +38,6 @@
   "signOut": "Cerrar sesión",
   "webBanners": "Banners Web",
   "pagelyLogos": "Logos de Pagely",
-  "hostingSetupImages": "Imágenes de Config. de Hosting",
   "websiteSetupTutorial": "Tutorial de Config. del Sitio",
   "language": "Idioma",
   "spanish": "Español",
@@ -98,5 +97,207 @@
     "subscribe": "Suscribirse",
 
     "copyright": "©2025 Pagely Todos los derechos reservados"
+  },
+  "pricingCard": {
+    "mostPopular": "Más Popular",
+    "plans": [
+      {
+        "title": "ProPress",
+        "description": "Configuración de Alta Disponibilidad $1249/mes",
+        "price": "$499 /por mes",
+        "features": [
+          "35 Sitios de WordPress Permitidos",
+          "2 vCPU",
+          "4 GB RAM",
+          "50 GB Almacenamiento SSD",
+          "Sin límite de PHP Workers",
+          "Recursos de Base de Datos Desacoplados",
+          "DevOps Administrado y Soporte",
+          "Configuración Flexible"
+        ]
+      },
+      {
+        "title": "PowerPress",
+        "description": "Configuración de Alta Disponibilidad $2249/mes",
+        "price": "$999 /por mes",
+        "features": [
+          "60 Sitios de WordPress Permitidos",
+          "4 vCPU",
+          "8 GB RAM",
+          "50 GB Almacenamiento SSD",
+          "Sin límite de PHP Workers",
+          "Recursos de Base de Datos Desacoplados",
+          "DevOps Administrado y Soporte",
+          "Configuración Flexible"
+        ]
+      },
+      {
+        "title": "ScalePress",
+        "description": "Configuración de Alta Disponibilidad $3600/mes",
+        "price": "$2500 /por mes",
+        "features": [
+          "Número Personalizado de Sitios de WordPress",
+          "CPU Personalizado",
+          "RAM Personalizada",
+          "Almacenamiento SSD Personalizado",
+          "Sin límite de PHP Workers",
+          "Recursos de Base de Datos Desacoplados",
+          "DevOps Administrado y Soporte",
+          "Configuración Flexible"
+        ]
+      }
+    ],
+    "buyNow": "Comprar Ahora",
+    "comparePlans": "Comparar Planes"
+  },
+  "blog": "Blog",
+  "guides": "Guías",
+  "partnerServices": "Servicios para Socios",
+  "partnershipOracle": "Programa de Asociación Oracle",
+  "submitReferral": "Enviar una Referencia",
+  "partnershipOraclePage": {
+    "title": "Programa de Asociación Pagely Oracle",
+    "subtitle": "Bienvenido al Programa de Socios de Pagely. Estamos emocionados de tenerte como parte de nuestro equipo de proveedores de servicios que promovemos. Las preguntas a continuación te ayudarán a navegar por tus beneficios, lo que hacemos por ti y cómo aprovechar al máximo nuestra asociación.",
+    "label": "Programa de Asociación"
+  },
+  "hostingSetupImages": {
+    "title": "Imágenes de Configuración de Hosting",
+    "description": "En Pagely, creemos en empoderar a nuestros afiliados con herramientas y recursos para ayudar a sus clientes a tener éxito. Esta guía simplifica el proceso de elegir y explicar nuestros planes de hosting, asegurando que sus clientes comprendan fácilmente los beneficios y tomen la mejor decisión para su negocio.",
+    "sections": {
+      "choosePlan": {
+        "title": "Sección 1: Elige el Plan de Hosting Correcto",
+        "description": "Pagely ofrece soluciones de hosting escalables y seguras para satisfacer las necesidades de empresas de todos los tamaños. Aquí te mostramos cómo guiar a tus clientes en la selección del mejor plan:"
+      },
+      "stepsToGetStarted": {
+        "title": "Sección 2: Pasos para Comenzar",
+        "subtitle": "Un Proceso Simple en 3 Pasos",
+        "steps": {
+          "step1": {
+            "title": "Elige un Plan de Hosting",
+            "description": "Guía a tus clientes para seleccionar un plan basado en sus necesidades empresariales."
+          },
+          "step2": {
+            "title": "Conecta un Dominio",
+            "description": "Pueden registrar un dominio nuevo o vincular uno existente para comenzar de inmediato."
+          },
+          "step3": {
+            "title": "Lanza su Sitio",
+            "description": "El equipo de soporte experto de Pagely asistirá con la migración y el proceso de configuración para asegurar una transición fluida."
+          }
+        }
+      },
+      "resourcesForClients": {
+        "title": "Sección 3: Recursos para tus Clientes",
+        "subtitle": "Recursos esenciales para simplificar el hosting",
+        "resources": {
+          "visualAssets": {
+            "title": "Recursos Visuales",
+            "description": "Proporciona capturas de pantalla, banners y logotipos para ayudar a ilustrar la experiencia de hosting."
+          },
+          "faqs": {
+            "title": "Preguntas Frecuentes",
+            "description": "Comparte preguntas y respuestas comunes para abordar inquietudes de los clientes."
+          },
+          "support": {
+            "title": "Soporte",
+            "description": "Destaca el soporte experto 24/7 de Pagely disponible para ayudar con migraciones y desafíos de hosting."
+          }
+        }
+      },
+      "whyPagely": {
+        "title": "Sección 4: ¿Por qué Pagely?",
+        "subtitle": "Ayuda a tus clientes a entender por qué Pagely es la mejor opción para sus necesidades de hosting:",
+        "features": {
+          "performance": {
+            "title": "Optimizado para el Rendimiento",
+            "description": "Impulsado por AWS para una velocidad y tiempo de actividad excepcionales."
+          },
+          "security": {
+            "title": "Seguridad Empresarial",
+            "description": "Protección WAF y DDoS para mantener sus datos seguros."
+          },
+          "scalability": {
+            "title": "Soluciones Escalables",
+            "description": "Hosting que crece con su negocio."
+          },
+          "support": {
+            "title": "Soporte Especializado",
+            "description": "Asistencia permanente de nuestro equipo de especialistas en WordPress."
+          }
+        }
+      }
+    }
+  },
+  "currentCommissionRate": "Tasa de comisión actual",
+  "pendingCommissions": "Comisiones pendientes",
+  "paidThisMonth": "Pagado este mes",
+  "totalPaid": "Total pagado",
+  "sale": "/Venta",
+  "from": "Desde",
+  "to": "Hasta",
+  "export": "Exportar",
+  "campaign": "Campaña",
+  "plans": "Planes",
+  "event": "Evento",
+  "status": "Estado",
+  "commissionsReport": {
+    "title": "Informe de Comisiones",
+    "noCommissionsTitle": "Aún no tienes comisiones",
+    "noCommissionsDescription": "Aprende cómo puedes comenzar a generar comisiones de afiliado con nuestra guía de afiliados.",
+    "getAffiliateGuide": "Obtener Guía de Afiliados"
+  },
+
+  "conversionsReport": {
+    "title": "Informe de Conversiones"
+  },
+  "performanceGraph": {
+    "title": "Gráfico de Rendimiento"
+  },
+  "payoutOptions": {
+    "title": "Opciones de Pago",
+    "payoutMethodLabel": "Método de Pago",
+    "paypalEmailLabel": "PayPal - Correo Electrónico",
+    "minPayoutAmountLabel": "Monto Mínimo de Pago",
+
+    "infoText": "Pagamos tus comisiones semanalmente.\nPuedes especificar cómo deseas que te paguen y un monto mínimo de pago.",
+    "viewCommissionTiers": "Ver tus niveles de comisión",
+    "payoutMethods": {
+      "paypal": "PayPal",
+      "bankTransfer": "Transferencia Bancaria",
+      "crypto": "Criptomoneda",
+      "venmo": "Venmo",
+      "wise": "Wise",
+      "skrill": "Skrill"
+    }
+  },
+  "payoutDetails": {
+    "title": "Detalles de Pago"
+  },
+  "payoutHistory": {
+    "title": "Historial de Pagos"
+  },
+  "taxDocuments": {
+    "title": "Documentos Fiscales"
+  },
+  "all": "Todos",
+  "campaigns": {
+    "summer": "Campaña de Verano",
+    "blackFriday": "Black Friday",
+    "holiday": "Especiales Festivos"
+  },
+  "planOptions": {
+    "basic": "Plan Básico",
+    "premium": "Plan Premium",
+    "enterprise": "Plan Empresarial"
+  },
+  "events": {
+    "sale": "Venta",
+    "refund": "Reembolso",
+    "lead": "Cliente Potencial"
+  },
+  "statuses": {
+    "pending": "Pendiente",
+    "approved": "Aprobado",
+    "rejected": "Rechazado"
   }
 }

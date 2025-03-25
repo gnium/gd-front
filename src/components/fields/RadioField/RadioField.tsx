@@ -29,8 +29,10 @@ const RadioField: React.FC<RadioFieldProps> = ({
     labelStyle,
     descriptionStyle,
     className,
+    id,
     options = [],
-    renderOption // Nueva prop
+    renderOption, // Nueva prop
+    ...props
 }) => {
     const handleClick = (index: number) => {
         onChange(options[index]['value']);

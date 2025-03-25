@@ -43,7 +43,8 @@ const MyCampaignsPage = () => {
                 justifyContent: "center",
                 flexWrap: "nowrap",
                 gap: 10,
-                marginTop: 20
+                marginTop: 20,
+
 
             }}>
                 <Card
