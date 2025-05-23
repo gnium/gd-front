@@ -9,6 +9,7 @@
   "affiliate": "Afiliado",
   "visualAssets": "Recursos Visuales",
   "reporting": "Reportes",
+  "usersManagement": "Gestión de Usuarios",
 
   "hosting": "Hosting",
   "agencies": "Agencias",
@@ -299,5 +300,29 @@
     "pending": "Pendiente",
     "approved": "Aprobado",
     "rejected": "Rechazado"
-  }
+  },
+  "users": {
+    "title": "Usuarios",
+    "addUser": "Agregar Usuario",
+    "editUser": "Editar Usuario",
+    "deleteUser": "Eliminar Usuario",
+    "userDetails": "Detalles del Usuario",
+    "userRole": "Rol del Usuario",
+    "userStatus": "Estado del Usuario"
+  },
+  "userManagement": {
+    "title": "Gestión de Usuarios",
+    "addUser": "Agregar Usuario",
+    "editUser": "Editar Usuario",
+    "deleteUser": "Eliminar Usuario",
+    "userDetails": "Detalles del Usuario",
+    "userRole": "Rol del Usuario",
+    "userStatus": "Estado del Usuario"
+  },
+  "administrator": "Administrador",
+  "editor": "Editor",
+  "author": "Autor",
+  "subscriber": "Suscriptor",
+  "pagelyStaff": "Staff de Pagely",
+  "guestAuthor": "Autor Invitado"
 }

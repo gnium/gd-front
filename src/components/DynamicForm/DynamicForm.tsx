@@ -360,8 +360,8 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                         description={description}
                         value={formValues[name] || ''}
                         onChange={(value: string) => handleFieldChange(name, value)}
-                        minDate={additionalProps.minDate}
-                        maxDate={additionalProps.maxDate}
+                        //minDate={additionalProps.minDate}
+                        //maxDate={additionalProps.maxDate}
                         containerStyle={commonStyle.containerStyle}
                         inputStyle={additionalProps.inputStyle}
                         labelStyle={commonStyle.labelStyle}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import DateField from '../fields/DateField/DateField'
 import { useTranslation } from 'react-i18next';
 import SelectField from '../fields/SelectField/SelectField';
@@ -60,6 +60,9 @@ const CommissionsReport = () => {
                     <Button
                         title={t("export")}
                         size='xl'
+                        style={{
+                            height: 50
+                        }}
                         onClick={() => { }}
                     />
                 </div>

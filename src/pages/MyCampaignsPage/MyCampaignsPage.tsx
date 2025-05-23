@@ -44,7 +44,7 @@ const MyCampaignsPage = () => {
                 flexWrap: "nowrap",
                 gap: 10,
                 marginTop: 20,
-
+                flexDirection: "column",
 
             }}>
                 <Card

@@ -9,6 +9,7 @@
   "affiliate": "Affiliate",
   "visualAssets": "Visual Assets",
   "reporting": "Reporting",
+  "usersManagement": "Users Management",
 
   "hosting": "Hosting",
   "agencies": "Agencies",
@@ -271,7 +272,7 @@
     }
   },
   "payoutDetails": {
-    "title": "Payout Details"
+    "title": "Payout Overview"
   },
   "payoutHistory": {
     "title": "Payout History"
@@ -299,5 +300,29 @@
     "pending": "Pending",
     "approved": "Approved",
     "rejected": "Rejected"
-  }
+  },
+  "users": {
+    "title": "Users",
+    "addUser": "Add New User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "userDetails": "User Details",
+    "userRole": "User Role",
+    "userStatus": "User Status"
+  },
+  "userManagement": {
+    "title": "User Management",
+    "addUser": "Add New User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete User",
+    "userDetails": "User Details",
+    "userRole": "User Role",
+    "userStatus": "User Status"
+  },
+  "administrator": "Administrator",
+  "editor": "Editor",
+  "author": "Author",
+  "subscriber": "Subscriber",
+  "pagelyStaff": "Pagely Staff",
+  "guestAuthor": "Guest Author"
 }

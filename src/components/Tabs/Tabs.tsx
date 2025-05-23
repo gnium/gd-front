@@ -9,16 +9,21 @@ interface TabItem {
     label: string; // User-visible label
     icon?: string; // Icon name
     iconPaths?: any[]; // Custom icon paths
+    [key: string]: any;
 }
 
 interface TabsProps {
-    style?: React.CSSProperties;
+    containerStyle?: React.CSSProperties;
+    tabListStyle?: React.CSSProperties;
+    tabStyle?: React.CSSProperties;
+    activeTabStyle?: React.CSSProperties;
     id?: string;
     tabs: TabItem[];
     defaultActiveTab?: string;
     onTabChange?: (activeTab: string) => void;
     color?: string; // For customizing tab color
     renderTab?: (tab: TabItem, isActive: boolean) => React.ReactNode;
+    showActiveTabIndicator?: boolean;
 }
 
 const resolveIcon = (
@@ -36,13 +41,17 @@ const resolveIcon = (
 };
 
 const Tabs: React.FC<TabsProps> = ({
-    style,
+    containerStyle,
+    tabStyle,
+    activeTabStyle,
+    tabListStyle,
     id,
     tabs,
     defaultActiveTab,
     onTabChange,
     color = 'primary', // Default color
-    renderTab
+    renderTab,
+    showActiveTabIndicator = true
 }) => {
     const [activeTab, setActiveTab] = useState<string>(defaultActiveTab || tabs[0].name);
 
@@ -56,8 +65,8 @@ const Tabs: React.FC<TabsProps> = ({
     const resolvedColor = color in themeColors ? themeColors[color as keyof typeof themeColors] : color;
 
     return (
-        <div {...(id ? { id } : {})} style={style}>
-            <ul style={{ display: 'flex', listStyle: 'none', padding: 0 }}>
+        <div {...(id ? { id } : {})} style={containerStyle}>
+            <ul style={{ display: 'flex', listStyle: 'none', padding: 0, ...tabListStyle }}>
                 {tabs.map((tab) => {
                     const isActive = activeTab === tab.name;
                     const tabContent = renderTab ? (
@@ -81,13 +90,14 @@ const Tabs: React.FC<TabsProps> = ({
                                 textAlign: "center",
                                 position: "relative",
                                 transition: "color 0.3s ease-in-out",
-
+                                ...(tabStyle || {}),
+                                ...(isActive ? activeTabStyle || {} : {}),
                             }}
                             onClick={() => handleTabClick(tab.name)}
                         >
                             {tabContent}
                             <div
-                                style={isActive ? {
+                                style={isActive && showActiveTabIndicator ? {
                                     ...activeTabIndicatorStyle,
                                     transform: "scaleX(1)", // Se expande completamente
                                 } : { transform: "scaleX(0)", }}

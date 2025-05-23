@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
+import { useAuth } from "../../contexts/AuthContext";
 import background from '../../assets/backgrounds/background.png'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import TypingEffect from '../../components/TypingEffect/TypingEffect';
@@ -11,34 +13,109 @@ import CommissionsReport from '../../components/CommissionsReport/CommissionsRep
 import ConversionsReport from '../../components/ConversionsReport/ConversionsReport';
 import PerformanceGraph from '../../components/PerformanceGraph/PerformanceGraph';
 import AnimatedNumber from '../../components/AnimatedNumber/AnimatedNumber';
+import {calculatePaidThisMonth, calculateTotalPaid, calculateCurrentCommissionRate, calculatePendingCommissions} from '../../utils/commissionsFunctions';
+
+type AdvertiserCommission = {
+    pubCommissionAmountUsd: string;
+    postingDate: string;
+};
+
+type CommissionsResponse = {
+    records: AdvertiserCommission[];
+};
 
 const ReportingPage = () => {
+    const { getUser, getToken } = useAuth();
+    const user = getUser();
+    const [commissionsData, setCommissionsData] = useState<CommissionsResponse | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [lastFetchTime, setLastFetchTime] = useState<number>(0);
+    console.log("USER", user);
+
+    const publisher_id = user?.publisher_id || 12345;
+
+    const fetchCommissionsData = useCallback(async () => {
+        // Prevent multiple simultaneous calls
+        if (isLoading) return;
+
+        // Prevent calls more frequent than every 30 seconds
+        const now = Date.now();
+        if (now - lastFetchTime < 30000) return;
+
+        try {
+            setIsLoading(true);
+            const token = getToken();
+            const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/';
+            const response = await axios.get(
+                `${baseUrl}/cj/get-commissions?publisher_id=${publisher_id}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }
+            );
+    
+            const data = response.data;
+            console.log("Commissions data:", data);
+            setCommissionsData(data);
+            setLastFetchTime(now);
+        } catch (error) {
+            console.error('Error fetching commissions data:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [publisher_id, getToken, isLoading, lastFetchTime]);
+    
+    // Fetch data only when user or publisher_id changes and we don't have data
+    useEffect(() => {
+        if (user && publisher_id && !commissionsData && !isLoading) {
+            fetchCommissionsData();
+        }
+    }, [user, publisher_id, commissionsData, isLoading, fetchCommissionsData]);
+
+    let commissionsContent;
+    let totalPaid = 0;
+    let paidThisMonth = 0;
+    let pendingCommissions = 0;
+    let currentCommissionRate = 0;
+
+    if (isLoading) {
+        commissionsContent = <p>Loading...</p>;
+    } else if (commissionsData?.records) {
+        totalPaid = calculateTotalPaid(commissionsData.records);
+        paidThisMonth = calculatePaidThisMonth(commissionsData.records);
+        pendingCommissions = calculatePendingCommissions(commissionsData.records);
+        currentCommissionRate = calculateCurrentCommissionRate(commissionsData.records);
+    }
+   
     const { t } = useTranslation();
     const [currentTab, setCurrentTab] = useState('commissionsReport');
     const cards = [
         {
             icon: "commissionRate",
             prefix: '$',
-            amount: 50,
+            amount: currentCommissionRate,
             label: t("currentCommissionRate"),
             suffix: t("sale"),
         },
         {
             icon: "pendingCommissions",
             prefix: '$',
-            amount: 140,
+            amount: pendingCommissions,
             label: t("pendingCommissions"),
         },
         {
             icon: "paidThisMonth",
             prefix: '$',
-            amount: 99,
+            amount: paidThisMonth,
             label: t("paidThisMonth"),
         },
         {
             icon: "totalPaid",
             prefix: '$',
-            amount: 987,
+            amount: totalPaid,
             label: t("totalPaid"),
         },
     ];
@@ -49,6 +126,7 @@ const ReportingPage = () => {
                 maxWidth: 1000
             }}
         >
+            <div>{commissionsContent}</div>
             <PageHeader
                 backgroundImage={background}
                 height={100}

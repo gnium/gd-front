@@ -28,6 +28,33 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
     const { getUser } = useAuth();
     const user = getUser();
 
+    console.log("User", user);
+    const isAdmin = user.roles && user.roles.length > 0 && user.roles[0].name === "admin";
+
+    const getMenuItems = () => {
+        if (isAdmin) {
+            return [
+                { labelKey: "myCampaigns", path: "/", icon: <Icon color={themeColors.primary} name="megaphone" /> },
+                { labelKey: "visualAssets", path: "/visual-assets", icon: <Icon color={themeColors.primary} name="palette" /> },
+                { labelKey: "reporting", path: "/reporting", icon: <Icon color={themeColors.primary} name="chart" /> },
+                { labelKey: "payoutDetails.title", path: "/payout-details", icon: <Icon color={themeColors.primary} name="creditCard" /> },
+                { labelKey: "partnershipOracle", path: "/partnership-oracle", icon: <Icon color={themeColors.primary} name="oracle" /> },
+                { labelKey: "submitReferral", path: "/submit-referral", icon: <Icon color={themeColors.primary} name="referral" /> },
+                { labelKey: "userManagement.title", path: "/user-management", icon: <Icon color={themeColors.primary} name="users" /> },
+            ];
+        } 
+        return [
+            { labelKey: "myCampaigns", path: "/", icon: <Icon color={themeColors.primary} name="megaphone" /> },
+            { labelKey: "visualAssets", path: "/visual-assets", icon: <Icon color={themeColors.primary} name="palette" /> },
+            { labelKey: "reporting", path: "/reporting", icon: <Icon color={themeColors.primary} name="chart" /> },
+            { labelKey: "payoutDetails.title", path: "/payout-details", icon: <Icon color={themeColors.primary} name="creditCard" /> },
+            { labelKey: "partnershipOracle", path: "/partnership-oracle", icon: <Icon color={themeColors.primary} name="oracle" /> },
+            { labelKey: "submitReferral", path: "/submit-referral", icon: <Icon color={themeColors.primary} name="referral" /> }
+        ];
+    };
+
+    const menuItems = getMenuItems();
+
     return (
         <>
             <div style={{
@@ -83,14 +110,7 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
                             position: "relative",
                             top: -100
                         }}
-                        menuItems={[
-                            { labelKey: "myCampaigns", path: "/", icon: <Icon color={themeColors.primary} name="megaphone" /> },
-                            { labelKey: "visualAssets", path: "/visual-assets", icon: <Icon color={themeColors.primary} name="palette" /> },
-                            { labelKey: "reporting", path: "/reporting", icon: <Icon color={themeColors.primary} name="chart" /> },
-                            { labelKey: "payoutDetails.title", path: "/payout-details", icon: <Icon color={themeColors.primary} name="creditCard" /> },
-                            { labelKey: "partnershipOracle", path: "/partnership-oracle", icon: <Icon color={themeColors.primary} name="oracle" /> },
-                            { labelKey: "submitReferral", path: "/submit-referral", icon: <Icon color={themeColors.primary} name="referral" /> },
-                        ]}
+                        menuItems={menuItems}
                         renderMenuItem={(item: any) => {
 
                             return (

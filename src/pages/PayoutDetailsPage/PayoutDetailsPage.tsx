@@ -49,10 +49,9 @@ const PayoutDetailsPage = () => {
             >
                     <Tabs
                         tabs={[
-                            { name: "payoutOptions", label: t("payoutOptions.title") },
+                            
                             { name: "payoutDetails", label: t("payoutDetails.title") },
                             { name: "payoutHistory", label: t("payoutHistory.title") },
-                            { name: "taxDocuments", label: t("taxDocuments.title") }
                         ]}
                         defaultActiveTab={currentTab}
                         onTabChange={(tab) => {

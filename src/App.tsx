@@ -1,6 +1,8 @@
 // App.tsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ApolloProvider } from '@apollo/client';
+
 
 
 import PublicLayout from "./layouts/PublicLayout/PublicLayout";
@@ -8,6 +10,7 @@ import AuthLayout from "./layouts/AuthLayout/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
+import client from "./utils/apolloClient";
 
 import './App.scss';
 import './App.css';
@@ -37,74 +40,81 @@ import PayoutDetailsPage from "./pages/PayoutDetailsPage/PayoutDetailsPage";
 import VisualAssetsPage from "./pages/VisualAssetsPage/VisualAssetsPage";
 import PartnershipOraclePage from "./pages/PartnershipOraclePage/PartnershipOraclePage";
 import SubmitReferralPage from "./pages/SubmitReferralPage/SubmitReferralPage";
+import UserManagementPage from "./pages/UserManagementPage/UserManagementPage";
+import SalesPage from "./pages/SalesPage/SalesPage";
 
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          {/* Private routes */}
-          <Route element={
-            <PrivateRoute
-              checkOnboarding={false}
-            />
-          }>
-            <Route
-              element={
-                <PrivateLayout
-                  showMenu={true}
-                  showSidebar={false}
-                  showFooter={true}
-                />
-              }
-            >
-              <Route path="/partnership-oracle" element={<PartnershipOraclePage />} />
+    <ApolloProvider client={client}>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            {/* Private routes */}
+            <Route element={
+              <PrivateRoute
+                checkOnboarding={false}
+              />
+            }>
+              <Route
+                element={
+                  <PrivateLayout
+                    showMenu={true}
+                    showSidebar={false}
+                    showFooter={true}
+                  />
+                }
+              >
+                <Route path="/partnership-oracle" element={<PartnershipOraclePage />} />
+              </Route>
+              <Route
+                element={
+                  <PrivateLayout
+                    showMenu={true}
+                    showSidebar
+                    showFooter
+                  />
+                }
+              >
+
+                <Route path="/" element={<MyCampaignsPage />} />
+                <Route path="/reporting" element={<ReportingPage />} />
+                <Route path="/payout-details" element={<PayoutDetailsPage />} />
+                <Route path="/visual-assets" element={<VisualAssetsPage />} />
+                <Route path="/users" element={<UsersPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/notifications" element={<NotificationsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/referral-actions" element={<ReferralActionsPage />} />
+                <Route path="/referrers" element={<ReferrersPage />} />
+                <Route path="/referral-links" element={<ReferralLinksPage />} />
+                <Route path="/referral-clicks" element={<ReferralClicksPage />} />
+
+                <Route path="/submit-referral" element={<SubmitReferralPage />} />
+                <Route path="/user-management" element={<UserManagementPage />} />
+                <Route path="/sales" element={<SalesPage />} />
+                <Route path="/settings/my-account" element={<SettingsPage />} />
+              </Route>
             </Route>
-            <Route
-              element={
-                <PrivateLayout
-                  showMenu={true}
-                  showSidebar
-                  showFooter
-                />
-              }
-            >
-
-              <Route path="/" element={<MyCampaignsPage />} />
-              <Route path="/reporting" element={<ReportingPage />} />
-              <Route path="/payout-details" element={<PayoutDetailsPage />} />
-              <Route path="/visual-assets" element={<VisualAssetsPage />} />
-              <Route path="/users" element={<UsersPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/notifications" element={<NotificationsPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="/referral-actions" element={<ReferralActionsPage />} />
-              <Route path="/referrers" element={<ReferrersPage />} />
-              <Route path="/referral-links" element={<ReferralLinksPage />} />
-              <Route path="/referral-clicks" element={<ReferralClicksPage />} />
-
-              <Route path="/submit-referral" element={<SubmitReferralPage />} />
+            {/* Public routes */}
+            <Route element={<PublicLayout />}>
+              <Route path="/auth/register" element={<AuthRegisterDemoPage />} />
+              <Route path="/domains/checkout" element={<DomainCheckoutDemoPage />} />
             </Route>
-          </Route>
-          {/* Public routes */}
-          <Route element={<PublicLayout />}>
-            <Route path="/auth/register" element={<AuthRegisterDemoPage />} />
-            <Route path="/domains/checkout" element={<DomainCheckoutDemoPage />} />
-          </Route>
 
-          {/* Auth routes */}
-          <Route element={<AuthLayout />}>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Route>
+            {/* Auth routes */}
+            <Route element={<AuthLayout />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
 
-          {/* Ruta de 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+            {/* Ruta de 404 */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ApolloProvider>
   );
 };
 

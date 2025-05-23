@@ -1,12 +1,21 @@
 
 import DynamicList from '../../components/DynamicList/DynamicList';
 import Header from '../../components/Header/Header';
+import { useTranslation } from 'react-i18next';
+import background from '../../assets/backgrounds/background.png'
+import PageHeader from '../../components/PageHeader/PageHeader'
+import TypingEffect from '../../components/TypingEffect/TypingEffect';
+import Card from '../../components/Card/Card';
+import { CopyButton } from '../../components/buttons/CopyButton/CopyButton';
+import Button from '../../components/buttons/Button/Button';
+import Icon from '../../components/Icon/Icon';
 import { themeColors, urls } from '../../config';
 import useIsMobile from '../../hooks/useIsMobile';
 
 
 
 const UsersPage = () => {
+    const { t } = useTranslation();
     const breakpoint = 768;
     const { isMobile } = useIsMobile(breakpoint);
 
@@ -26,8 +35,42 @@ const UsersPage = () => {
     return (
         <div
             style={{
+                width: '100%',
+                maxWidth: 800
             }}
         >
+            <PageHeader
+                backgroundImage={background}
+                height={100}
+                containerStyle={{
+                    borderRadius: 20,
+                    alignItems: 'flex-start',
+
+                }}
+                renderContent={() => {
+                    return <div>
+
+                        <TypingEffect
+                            showCursor={false}
+                            text={t("usersManagement")}
+                            style={{
+                                fontWeight: 700,
+                                fontSize: 30,
+                            }}
+                        />
+                    </div>
+                }}
+            />
+
+            <main style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "nowrap",
+                gap: 10,
+                marginTop: 20,
+                flexDirection: "column",
+
+            }}>
             <Header
                 startSlots={[
                     {
@@ -79,11 +122,47 @@ const UsersPage = () => {
                 }}
                 className="app-header"
             />
-            <main style={{
-                padding: "16px",
-                display: "flex",
-                justifyContent: "center",
-            }}>
+            
+                <div>
+                    <div style={{
+                            padding: 10
+                        }}>
+                            <Button
+                                title={t('users.addUser')}
+                                onClick={() => { }}
+                            />
+                        </div>
+                    <div style={{ display: 'flex', gap: '10px', padding: '10px', flexWrap: 'wrap' }}>
+                        {[
+                            { title: 'All', count: 120 },
+                            { title: 'Administrator', count: 10 },
+                            { title: 'Editor', count: 15 },
+                            { title: 'Author', count: 20 },
+                            { title: 'Subscriber', count: 50 },
+                            { title: 'Pagely Staff', count: 5 },
+                            { title: 'Guest Author', count: 20 },
+                        ].map((filter) => (
+                            <div
+                                key={filter.title}
+                                onClick={() => console.log(`Filter clicked: ${filter.title}`)}
+                                style={{
+                                    cursor: 'pointer',
+                                    padding: '10px 15px',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '20px',
+                                    backgroundColor: '#f9f9f9',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '5px',
+                                }}
+                            >
+                                <span style={{ fontWeight: 'bold' }}>{filter.title}</span>
+                                <span style={{ color: '#888' }}>({filter.count})</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            
                 <DynamicList
                     containerStyle={{
                         width: "100%",
