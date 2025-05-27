@@ -6,7 +6,7 @@ import { themeColors } from '../../../config';
 import Button from '../Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import Icon from '../../Icon/Icon';
+
 
 interface ProfileButtonProps {
     buttonStyle?: React.CSSProperties; // Custom styles for the main button

@@ -176,12 +176,9 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                     <MiniLineChart
                         data={data}
                         height={80}
-                        onMarkerClick={((data: any, index) => {
-                            console.log(data);
-                            setCurrentPeriod(data.displayPeriod);
-                            setCurrentValue(data.total);
-                        })}
-                    //width={100}
+                        onMarkerClick={() => {
+                            // Handle marker click
+                        }}
                     />
                 </div>;
             case 'bar':
@@ -192,29 +189,19 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                     <MiniBarChart
                         data={data}
                         height={80}
-                        onBarClick={((data: any, index) => {
-                            console.log(data);
-                            setCurrentPeriod(data.displayPeriod);
-                            setCurrentValue(data.total);
-                        })}
-                    //width={100}
+                        onBarClick={() => {
+                            // Handle bar click
+                        }}
                     />
                 </div>;
             case 'groupedBar':
-                // Asegurarnos de que el tipo de datos sea CompositeData[]
                 const groupedBarData: any = (data as CompositeData[]).filter((item) => item.values && item.values.length > 0);
                 return (
-                    <div
-                        style={{
-                            width: "100%",
-                            //marginTop: 10,
-                        }}
-                    >
+                    <div style={{ width: "100%" }}>
                         <MiniGroupedBarChart
                             data={groupedBarData}
                             height={80}
-                            onSubBarClick={(value, index, group) => {
-                                console.log(value, group);
+                            onSubBarClick={(value: any, _index: number, group: any) => {
                                 setCurrentPeriod(group.displayPeriod || group.period);
                                 setCurrentValue(value.value);
                                 setCurrentLabel(value.label);
@@ -223,21 +210,14 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
                         />
                     </div>
                 );
-
             case 'stackedBar':
                 const stackedBarData: any = (data as CompositeData[]).filter((item) => item.values && item.values.length > 0);
                 return (
-                    <div
-                        style={{
-                            width: "100%",
-                            //marginTop: 10,
-                        }}
-                    >
+                    <div style={{ width: "100%" }}>
                         <MiniStackedBarChart
                             data={stackedBarData}
                             height={80}
-                            onSubBarClick={(value, index, group) => {
-                                console.log(value, group);
+                            onSubBarClick={(value: any, _index: number, group: any) => {
                                 setCurrentPeriod(group.displayPeriod || group.period);
                                 setCurrentValue(value.value);
                                 setCurrentLabel(value.label);
@@ -249,19 +229,12 @@ const IndicatorCard: React.FC<IndicatorCardProps> = ({
             case 'pie':
                 const pieBarData: any = (data as CompositeData[]).filter((item) => item.values && item.values.length > 0);
                 return (
-                    <div
-                        style={{
-                            width: "100%",
-                            //marginTop: 10,
-                        }}
-                    >
+                    <div style={{ width: "100%" }}>
                         <MiniPieChart
                             data={pieBarData}
                             height={90}
                             width={90}
-                            onSliceClick={(index, value) => {
-                                console.log(value, value);
-                                //setCurrentPeriod(group.displayPeriod || group.period);
+                            onSliceClick={(_sliceIndex: number, value: any) => {
                                 setCurrentValue(value.value);
                                 setCurrentLabel(value.label);
                                 setCurrentColor(value.color);

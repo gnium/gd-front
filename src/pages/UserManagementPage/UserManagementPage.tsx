@@ -10,7 +10,7 @@ import { themeColors } from '../../config';
 import DynamicTable from '../../components/DynamicTable/DynamicTable';
 import { ColumnDefinition } from '../../components/DynamicTable/DynamicTable.types';
 import { useAuth } from '../../contexts/AuthContext';
-import CheckboxField from '../../components/fields/CheckboxField/CheckboxField';
+
 
 type Role = {
     id: number;
@@ -170,7 +170,7 @@ const UserManagementPage = () => {
                 sortable: false, 
                 align: 'center', 
                 width: 60,
-                render: (row: User) => (
+                render: () => (
                     <div style={{ 
                         width: 40, 
                         height: 40, 
@@ -264,7 +264,7 @@ const UserManagementPage = () => {
             const token = getToken();
             const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/';
             
-            const response = await axios.post(
+            await axios.post(
                 `${baseUrl}/users`,
                 {
                     ...formData,

@@ -65,7 +65,7 @@ const MiniLineChart: React.FC<MiniLineChartProps> = ({
             x: { display: false },
             y: { display: false },
         },
-        onClick: (event: any, elements: any) => {
+        onClick: (_event: any, elements: any) => {
             if (elements.length > 0) {
                 const index = elements[0].index;
                 setCurrentIndex(index);

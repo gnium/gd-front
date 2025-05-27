@@ -5,11 +5,8 @@ import { useTranslation } from 'react-i18next';
 import background from '../../assets/backgrounds/background.png'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import TypingEffect from '../../components/TypingEffect/TypingEffect';
-import Card from '../../components/Card/Card';
-import { CopyButton } from '../../components/buttons/CopyButton/CopyButton';
 import Button from '../../components/buttons/Button/Button';
-import Icon from '../../components/Icon/Icon';
-import { themeColors, urls } from '../../config';
+import { urls } from '../../config';
 import useIsMobile from '../../hooks/useIsMobile';
 
 

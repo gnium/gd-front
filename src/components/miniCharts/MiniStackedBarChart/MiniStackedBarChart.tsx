@@ -63,7 +63,7 @@ const MiniStackedBarChart: React.FC<MiniStackedBarChartProps> = ({
             x: { stacked: true, display: false }, // Apilar en el eje X
             y: { stacked: true, display: false }, // Apilar en el eje Y
         },
-        onClick: (event: any, elements: any) => {
+        onClick: (_event: any, elements: any) => {
             if (elements.length > 0) {
                 const datasetIndex = elements[0].datasetIndex;
                 const index = elements[0].index;

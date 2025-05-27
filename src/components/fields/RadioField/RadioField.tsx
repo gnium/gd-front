@@ -15,6 +15,11 @@ interface RadioFieldProps {
     id?: string;
     options: any[];
     renderOption?: (option: any, index: number, isActive: boolean) => React.ReactNode; // Nueva prop
+    optionContainerStyle?: React.CSSProperties;
+    optionLabelStyle?: React.CSSProperties;
+    optionDescriptionStyle?: React.CSSProperties;
+    optionHeaderStyle?: React.CSSProperties;
+    optionBodyStyle?: React.CSSProperties;
     [key: string]: any;
 }
 
@@ -23,16 +28,14 @@ const RadioField: React.FC<RadioFieldProps> = ({
     description,
     value,
     onChange,
+    options,
+    renderOption,
     containerStyle,
-    headerStyle,
-    bodyStyle,
-    labelStyle,
-    descriptionStyle,
-    className,
-    id,
-    options = [],
-    renderOption, // Nueva prop
-    ...props
+    optionHeaderStyle,
+    optionBodyStyle,
+    optionLabelStyle,
+    optionDescriptionStyle,
+    className
 }) => {
     const handleClick = (index: number) => {
         onChange(options[index]['value']);
@@ -59,14 +62,14 @@ const RadioField: React.FC<RadioFieldProps> = ({
                         width: '100%',
                         position: 'relative',
                         boxSizing: 'border-box',
-                        ...headerStyle,
+                        ...optionHeaderStyle,
                     }}
                 >
                     <label
                         style={{
                             fontWeight: '600',
                             color: themeColors.text,
-                            ...labelStyle,
+                            ...optionLabelStyle,
                         }}
                     >
                         {label}
@@ -81,7 +84,7 @@ const RadioField: React.FC<RadioFieldProps> = ({
                         flexWrap: 'nowrap',
                         alignItems: 'center',
                         cursor: 'pointer',
-                        ...bodyStyle,
+                        ...optionBodyStyle,
                     }}
                 >
                     <div>
@@ -156,7 +159,7 @@ const RadioField: React.FC<RadioFieldProps> = ({
                         margin: 0,
                         color: themeColors.textTint,
                         fontSize: '.9em',
-                        ...descriptionStyle,
+                        ...optionDescriptionStyle,
                     }}
                 >
                     {description}

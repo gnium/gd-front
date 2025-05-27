@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { themeColors } from "../../config";
-import useIsMobile from "../../hooks/useIsMobile";
+
 import { useAuth } from "../../contexts/AuthContext";
 import logoHorizontalWhite from '../../assets/logos/logo-horizontal-white.svg';
 import pagelyBg from '../../assets/backgrounds/pagely-bg.svg';
@@ -22,13 +22,10 @@ interface PrivateLayoutProps {
 
 const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSidebar = false, showFooter = false }) => {
     const { t, i18n } = useTranslation();
-    const location = useLocation();
-    const breakpoint = 768;
-    const { isMobile } = useIsMobile(breakpoint);
+    
     const { getUser } = useAuth();
     const user = getUser();
-
-    console.log("User", user);
+    
     const isAdmin = user.roles && user.roles.length > 0 && user.roles[0].name === "admin";
 
     const getMenuItems = () => {
@@ -248,14 +245,11 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ showMenu = false, showSid
                                         onChange={(value) => {
                                             i18n.changeLanguage(value)
                                         }}
-                                        buttonStyle={{
-                                            backgroundColor: themeColors.primary,
-                                            height: 44,
-                                            borderRadius: 99,
-                                            borderWidth: 0
-                                        }}
-                                        buttonTitleStyle={{
-                                            color: themeColors.text,
+                                        style={{
+                                            backgroundColor: '#171518',
+                                            height: 50,
+                                            borderRadius: 10,
+                                            borderWidth: 2,
                                         }}
                                     />
                                 </div>

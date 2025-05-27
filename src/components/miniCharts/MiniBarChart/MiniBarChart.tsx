@@ -63,7 +63,7 @@ const MiniBarChart: React.FC<MiniBarChartProps> = ({
             x: { display: false }, // Ocultar eje X
             y: { display: false }, // Ocultar eje Y
         },
-        onClick: (event: any, elements: any) => {
+        onClick: (_event: any, elements: any) => {
             if (elements.length > 0) {
                 const index = elements[0].index;
                 setCurrentIndex(index);

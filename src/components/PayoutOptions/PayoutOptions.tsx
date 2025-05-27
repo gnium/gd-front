@@ -1,4 +1,3 @@
-import React from 'react'
 import EmailField from '../fields/EmailField/EmailField'
 import { themeColors } from '../../config';
 import { useTranslation } from 'react-i18next';

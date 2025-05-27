@@ -37,7 +37,7 @@ const MiniPieChart: React.FC<MiniPieChartProps> = ({
     onPeriodChange,
     onSliceClick,
 }) => {
-    const [currentIndex, setCurrentIndex] = useState(data.length - 1); // Comienza en el último periodo
+    const [currentIndex] = useState(data.length - 1); // Comienza en el último periodo
     const [chartData, setChartData] = useState<ChartData<"pie", number[], string>>({
         labels: [],
         datasets: [],
@@ -59,7 +59,7 @@ const MiniPieChart: React.FC<MiniPieChartProps> = ({
                 // },
             },
         },
-        onClick: (event: any, elements: any) => {
+        onClick: (_event: any, elements: any) => {
             if (elements.length > 0) {
                 const sliceIndex = elements[0].index;
                 const selectedValue = data[currentIndex].values[sliceIndex];

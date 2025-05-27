@@ -1,4 +1,4 @@
-import React from 'react'
+
 import GradientLineChart from '../../charts/GradientLineChart/GradientLineChart'
 
 const PerformanceGraph = () => {

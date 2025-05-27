@@ -118,7 +118,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
 }) => {
     const [processing, setProcessing] = useState(false);
     const [formValues, setFormValues] = useState<Record<string, any>>({});
-    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+    const [isMobile] = useState<boolean>(window.innerWidth <= 768);
     const client: HttpClient = useSecureConnection ? securedHttpClient : httpClient;
 
     if (apiBaseUrl) client.setBaseURL(apiBaseUrl);
@@ -356,17 +356,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
             case 'date':
                 return (
                     <DateField
-                        label={label}
-                        description={description}
                         value={formValues[name] || ''}
                         onChange={(value: string) => handleFieldChange(name, value)}
-                        //minDate={additionalProps.minDate}
-                        //maxDate={additionalProps.maxDate}
-                        containerStyle={commonStyle.containerStyle}
-                        inputStyle={additionalProps.inputStyle}
-                        labelStyle={commonStyle.labelStyle}
-                        descriptionStyle={commonStyle.descriptionStyle}
-                        {...additionalProps}
+                        style={additionalProps.inputStyle}
                     />
                 );
             case 'dateTime':

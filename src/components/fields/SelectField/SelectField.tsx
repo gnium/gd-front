@@ -4,50 +4,21 @@ import Popover from "../../Popover/Popover";
 import { themeColors } from "../../../config";
 
 interface SelectFieldProps {
-    label?: string;
-    description?: string;
     value: string;
-    onChange: (optionName: string) => void;
-    containerStyle?: React.CSSProperties;
-    labelStyle?: React.CSSProperties;
-    buttonStyle?: React.CSSProperties;
-    buttonTitleStyle?: React.CSSProperties;
-    popoverStyle?: React.CSSProperties;
-    descriptionStyle?: React.CSSProperties;
-    className?: string;
-    id?: string;
-    options?: { label: string; value: string }[];
-    optionStyle?: React.CSSProperties;
-    activeOptionStyle?: React.CSSProperties;
-    /** Controls visibility of the caret icon */
-    showCaret?: boolean;
-
-    /** Customizes the caret icon */
-    caretIcon?: string;
-
-    /** Sets the caret icon color */
+    onChange: (value: string) => void;
+    options: { value: string; label: string }[];
+    disabled?: boolean;
     caretColor?: string;
+    style?: React.CSSProperties;
 }
 
 const SelectField: React.FC<SelectFieldProps> = ({
-    label,
-    description,
     value,
     onChange,
-    containerStyle,
-    labelStyle,
-    popoverStyle,
-    buttonStyle,
-    buttonTitleStyle,
-    descriptionStyle,
-    className,
-    id,
-    optionStyle,
-    activeOptionStyle,
-    options = [],
-    showCaret = true,
-    caretIcon = "chevronDown", // Default to a down arrow
-    caretColor = themeColors.text,
+    options,
+    disabled = false,
+    caretColor,
+    style
 }) => {
     const buttonRef = useRef<HTMLDivElement | null>(null);
     const [isPopoverOpen, setPopoverOpen] = useState(false);
@@ -59,14 +30,11 @@ const SelectField: React.FC<SelectFieldProps> = ({
     const handleClick = (selectedOption: string) => {
         setSelectedValue(selectedOption);
         onChange(selectedOption);
-
-        setTimeout(() => {
-            closePopover();
-        }, 500);
+        closePopover();
     };
 
     return (
-        <div style={{ position: "relative", ...containerStyle }}>
+        <div style={{ position: "relative", ...style }}>
             {/* Button */}
             <Button
                 ref={buttonRef}
@@ -78,28 +46,18 @@ const SelectField: React.FC<SelectFieldProps> = ({
                 color={themeColors.medium}
                 titleStyle={{
                     color: themeColors.textTint,
-                    ...buttonTitleStyle
                 }}
                 onClick={togglePopover}
                 style={{
-                    paddingRight: showCaret ? 15 : 10,
+                    paddingRight: 10,
                     backgroundColor: '#171518',
-                    //justifyContent: 'space-between',
-                    ...buttonStyle,
                 }}
-                endIcon={showCaret ? caretIcon : ""}
+                endIcon="chevronDown"
                 endIconSize={12}
                 endIconColor={caretColor}
-                endIconStyle={{
-                    transition: "transform 0.3s ease-in-out",
-                    transform: isPopoverOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    //width: 90
-                }}
                 fullWidth
+                disabled={disabled}
             />
-
-
-
 
             {/* Popover Dropdown */}
             <Popover
@@ -124,17 +82,14 @@ const SelectField: React.FC<SelectFieldProps> = ({
                                         handleClick(option.value);
                                     }}
                                     className={isActive ? "active" : ""}
-
                                     style={{
                                         display: "block",
                                         width: "100%",
                                         border: "none",
                                         paddingTop: 10,
                                         paddingBottom: 10,
-                                        //padding: "10px 10px",
                                         fontWeight: isActive ? 500 : 300,
                                         textAlign: "center",
-                                        //color: isActive ? "#111" : themeColors.medium,
                                         color: themeColors.textTint,
                                         fontSize: ".9em",
                                         margin: "3px",
@@ -143,11 +98,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
                                         backgroundColor: isActive
                                             ? themeColors.medium
                                             : "transparent",
-                                        ...optionStyle,
-                                        ...(isActive && activeOptionStyle),
-
                                     }}
-
                                 >
                                     <span>{option.label}</span>
                                 </button>
@@ -159,7 +110,6 @@ const SelectField: React.FC<SelectFieldProps> = ({
                 isOpen={isPopoverOpen}
                 onClose={closePopover}
                 hasShadow
-                containerStyle={{ ...popoverStyle }}
             />
         </div>
     );

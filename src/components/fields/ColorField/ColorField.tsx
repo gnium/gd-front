@@ -189,7 +189,7 @@ const ColorField: React.FC<ColorFieldProps> = ({
                                                 <button
                                                     onClick={(e) => handleSelectSemanticColor(e, color.name)}
                                                     style={{
-                                                        backgroundColor: themeColors[color.name],
+                                                        backgroundColor: themeColors[color.name as keyof typeof themeColors],
                                                         opacity:
                                                             disablePrimary && color.name === "primary" ? 0.5 : 1,
                                                         cursor:

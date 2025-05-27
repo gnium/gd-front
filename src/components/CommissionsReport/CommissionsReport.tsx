@@ -1,4 +1,3 @@
-import React from 'react';
 import DateField from '../fields/DateField/DateField'
 import { useTranslation } from 'react-i18next';
 import SelectField from '../fields/SelectField/SelectField';
