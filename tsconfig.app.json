@@ -9,7 +9,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -17,6 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/*"]
+    },
+    "resolveJsonModule": true,
 
     /* Linting */
     "strict": true,

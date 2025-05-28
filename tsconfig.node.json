@@ -8,12 +8,16 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/*"]
+    },
 
     /* Linting */
     "strict": true,
