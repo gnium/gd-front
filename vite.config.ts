@@ -10,7 +10,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: './',
+  base: '/gd-front/dist/',
   build: {
     target: 'es2015',
     minify: 'esbuild',
