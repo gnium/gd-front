@@ -10,8 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  base: './',
   build: {
-    target: 'esnext',
+    target: 'es2015',
     minify: 'esbuild',
     rollupOptions: {
       output: {
@@ -23,7 +24,18 @@ export default defineConfig({
         }
       }
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
+    sourcemap: false,
+    cssCodeSplit: false,
+    assetsInlineLimit: 0,
+    reportCompressedSize: false,
+    emptyOutDir: true,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   },
   optimizeDeps: {
     include: ['axios', '@apollo/client', 'i18next', 'react-i18next'],
