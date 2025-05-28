@@ -45,7 +45,7 @@ const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
-        <Router basename="/gd-front/dist">
+        <Router>
           <Routes>
             {/* Auth routes */}
             <Route element={<AuthLayout />}>
