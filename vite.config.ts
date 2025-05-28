@@ -43,6 +43,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/api': {
+        target: 'http://167.99.49.225',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      },
       '/api/cj': {
         target: 'https://commission-detail.api.cj.com',
         changeOrigin: true,
