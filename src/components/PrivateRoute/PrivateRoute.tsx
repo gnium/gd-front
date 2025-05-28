@@ -22,7 +22,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
 
     if (!isAuthenticated) {
         // Redirect unauthenticated users to login
-        return <Navigate to={loginPath} replace />;
+        return <Navigate to={loginPath} state={{ from: location }} replace />;
     }
 
     if (

@@ -3,8 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloProvider } from '@apollo/client';
 
-
-
 import PublicLayout from "./layouts/PublicLayout/PublicLayout";
 import AuthLayout from "./layouts/AuthLayout/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
@@ -43,13 +41,19 @@ import SubmitReferralPage from "./pages/SubmitReferralPage/SubmitReferralPage";
 import UserManagementPage from "./pages/UserManagementPage/UserManagementPage";
 import SalesPage from "./pages/SalesPage/SalesPage";
 
-
 const App: React.FC = () => {
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL || './'}>
           <Routes>
+            {/* Auth routes */}
+            <Route element={<AuthLayout />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
+
             {/* Private routes */}
             <Route element={
               <PrivateRoute
@@ -76,7 +80,6 @@ const App: React.FC = () => {
                   />
                 }
               >
-
                 <Route path="/" element={<MyCampaignsPage />} />
                 <Route path="/reporting" element={<ReportingPage />} />
                 <Route path="/payout-details" element={<PayoutDetailsPage />} />
@@ -89,27 +92,20 @@ const App: React.FC = () => {
                 <Route path="/referrers" element={<ReferrersPage />} />
                 <Route path="/referral-links" element={<ReferralLinksPage />} />
                 <Route path="/referral-clicks" element={<ReferralClicksPage />} />
-
                 <Route path="/submit-referral" element={<SubmitReferralPage />} />
                 <Route path="/user-management" element={<UserManagementPage />} />
                 <Route path="/sales" element={<SalesPage />} />
                 <Route path="/settings/my-account" element={<SettingsPage />} />
               </Route>
             </Route>
+
             {/* Public routes */}
             <Route element={<PublicLayout />}>
               <Route path="/auth/register" element={<AuthRegisterDemoPage />} />
               <Route path="/domains/checkout" element={<DomainCheckoutDemoPage />} />
             </Route>
 
-            {/* Auth routes */}
-            <Route element={<AuthLayout />}>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-            </Route>
-
-            {/* Ruta de 404 */}
+            {/* 404 route */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
