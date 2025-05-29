@@ -47,7 +47,7 @@ export const GET_ADVERTISER_COMMISSIONS = gql`
 /**
  * curl --location 'https://commissions.api.cj.com/query' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer 15FG3Tx12JMZUk8_GSj1QtmduQ' \
+--header 'Authorization: Bearer ' \
 --data '{ advertiserCommissions(forAdvertisers: ["5331920"],
  sincePostingDate:"2025-01-01T00:00:00Z",beforePostingDate:"2025-01-31T00:00:00Z")
  {count payloadComplete records {commissionId actionTrackerName websiteName advertiserName postingDate pubCommissionAmountUsd 
@@ -66,7 +66,7 @@ export const GET_ADVERTISER_COMMISSIONS = gql`
 /**
  * curl --location 'https://commissions.api.cj.com/query' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer 15FG3Tx12JMZUk8_GSj1QtmduQ' \
+--header 'Authorization: Bearer ' \
 --data '{ publisherCommissions(forPublishers: ["7297379"], sincePostingDate:"2025-01-01T00:00:00Z",beforePostingDate:"2025-01-31T00:00:00Z"){count payloadComplete records {actionTrackerName websiteName advertiserName postingDate pubCommissionAmountUsd items { quantity perItemSaleAmountPubCurrency totalCommissionPubCurrency }}}}'
  */
 
