@@ -1,50 +1,152 @@
-# React + TypeScript + Vite
+# GoDaddy Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based frontend application for Pagely's partner program, built with Vite and TypeScript.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Technologies
+- **React 18** - UI Library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Build tool and development server
+- **React Router v6** - Client-side routing
+- **Apollo Client** - GraphQL client
+- **i18next** - Internationalization
+- **SCSS** - Advanced styling
 
-## Expanding the ESLint configuration
+### UI Components & Styling
+- **@mui/material** - Material-UI components
+- **@mui/icons-material** - Material icons
+- **@emotion/react** & **@emotion/styled** - CSS-in-JS styling
+- **react-toastify** - Toast notifications
+- **react-datepicker** - Date selection component
+- **react-select** - Enhanced select inputs
+- **react-beautiful-dnd** - Drag and drop functionality
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### State Management & Data Fetching
+- **@apollo/client** - GraphQL client
+- **axios** - HTTP client
+- **react-query** - Data fetching and caching
 
-- Configure the top-level `parserOptions` property like this:
+### Development Tools
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **TypeScript** - Static type checking
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📁 Project Structure
+
+```
+src/
+├── components/         # Reusable UI components
+│   ├── common/        # Shared components (buttons, inputs, etc.)
+│   ├── layout/        # Layout components (headers, footers, etc.)
+│   └── specific/      # Feature-specific components
+├── pages/             # Page components
+│   ├── auth/         # Authentication pages
+│   ├── dashboard/    # Dashboard pages
+│   └── public/       # Public pages
+├── layouts/           # Layout templates
+├── contexts/          # React contexts
+├── hooks/            # Custom React hooks
+├── utils/            # Utility functions
+├── services/         # API services
+├── config/           # Configuration files
+├── styles/           # Global styles
+└── types/            # TypeScript type definitions
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🛠️ Setup & Development
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Install Dependencies**
+   ```bash
+   yarn
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. **Development Server**
+   ```bash
+   yarn dev
+   ```
+
+3. **Build for Production**
+   ```bash
+   yarn build
+   ```
+
+4. **Preview Production Build**
+   ```bash
+   yarn preview
+   ```
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env` file in the root directory:
+```env
+VITE_API_BASE_URL=http://167.99.49.225:8080/api
+VITE_BASE_URL=/
 ```
+
+### Build Configuration
+The project uses Vite for building. Key configurations in `vite.config.ts`:
+- Base URL configuration
+- API proxy settings
+- Build optimization settings
+- Asset handling
+
+## 📦 Build Output
+
+The build process generates optimized files in the `dist` directory:
+- JavaScript bundles (vendor, app)
+- CSS files
+- Static assets
+- Source maps (disabled in production)
+
+## 🎨 Component Architecture
+
+### Layout Components
+- `PublicLayout` - For public pages
+- `AuthLayout` - For authentication pages
+- `PrivateLayout` - For authenticated user pages
+
+### Page Components
+- Authentication pages (Login, Register, Forgot Password)
+- Dashboard pages (Campaigns, Reporting, Settings)
+- Public pages (Landing, Documentation)
+
+### Common Components
+- Form components
+- Data display components
+- Navigation components
+- Modal components
+
+## 🔐 Authentication
+
+The application uses JWT-based authentication with:
+- Protected routes
+- Authentication context
+- Token management
+- Session handling
+
+## 🌐 Internationalization
+
+Using i18next for multi-language support:
+- Language detection
+- Translation management
+- RTL support
+
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 👥 Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Submit a pull request
+
+## 🔍 Code Quality
+
+- ESLint for code linting
+- Prettier for code formatting
+- TypeScript for type safety
+- Component documentation
